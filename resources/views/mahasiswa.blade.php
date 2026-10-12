@@ -19,7 +19,10 @@
         <div class="card mx-auto justify-content-center" style="max-width: 600px;">
             <div class="card-header">
                 <center>
-                    <img src="https://wallpapers.com/images/thumbnail/anime-meme-pfp-cnuq70iv0iccx8gt.jpg" alt="" style="width:120px; height: 120px; object-fit: cover;">
+                    <img src="{{ asset('images/rizky.jpeg') }}"
+                    alt="Foto {{ $mahasiswa['nama'] }}"
+                    class="rounded-circle mb-2"
+                    style="width:120px; height:120px; object-fit:cover;">
                 </center>
                 <h3 class="card-title text-center">{{ $mahasiswa['nama'] }}</h3>
             </div>
