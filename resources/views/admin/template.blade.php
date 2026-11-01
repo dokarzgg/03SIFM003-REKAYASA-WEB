@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>@yield('title', 'Admin Panel') - Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
     <script src="{{ asset('DataTables/jquery-3.6.1.js') }}"></script>
@@ -64,20 +64,24 @@ body {
         <h4 class="text-center fw-bold text-white pb-3 border-bottom border-secondary">Admin Panel</h4>
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('admin.home') }}">Home</a>
+                <a class="nav-link {{ request()->routeIs('admin.home') ? 'active' : '' }}" href="{{ route('admin.home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Project</a>
+                <a class="nav-link {{ request()->routeIs('admin.project.*') ? 'active' : '' }}" href="{{ route('admin.project.index') }}">Project</a>
+            </li>
+            <li class="nav-item mt-3 border-top border-secondary pt-2">
+                <a class="nav-link" href="{{ url('/') }}" target="_blank">&larr; Lihat Website</a>
             </li>
         </ul>
     </div>
     <div class="admin-content">
-        <div
-            class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom bg-white pb-3 rounded shadow-sm">
-            <h3 class="fw-bold mb-0">Dashboard</h3>
+        <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom bg-white p-3 rounded shadow-sm">
+            <h3 class="fw-bold mb-0">@yield('title', 'Dashboard')</h3>
             <span class="text-muted fw-semibold">Halo, Administrator</span>
         </div>
-        @yield('content')
+        <div class="mb-4">
+            @yield('content')
+        </div>
     </div>
     @stack('scripts')
 </body>

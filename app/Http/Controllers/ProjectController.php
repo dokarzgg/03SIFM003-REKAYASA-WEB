@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     //
     public function index()
-        {
-            $projects = Project::paginate(6);
+    {
+        $projects = Project::paginate(6);
 
-            return view('page.project', compact('projects'));
-        }
+        return view('page.projects', compact('projects'));
+    }
 
-     public function show($id)
-        {
-            $projects = Project::findOrfail($id);
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+        $projects = $project;
 
-            return view('page.project-detail', compact('project'));
-        }    
+        return view('page.project-detail', compact('project', 'projects'));
+    }
 }
